@@ -2,7 +2,7 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 import React from 'react'
 import { useState, useEffect } from 'react';
 
-const Screen02 = () => {
+const Screen02 = ({navigation}) => {
     const categories = ["Trending", "Popular", "We recommende"];
     const [data, setData] = useState([]);
     const [catergoryIndex, setCategoryIndex] = useState(0);
@@ -10,7 +10,9 @@ const Screen02 = () => {
         <Item title={item.name} img={item.img} price={item.price} />
       );
       const Item = ({ title , img , price}) => (
-        <TouchableOpacity>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate("Screen03")}
+        >
         <View style={{backgroundColor:"white",width:170,height:280,marginHorizontal:20,marginVertical:10}} >
           <Image source={{ uri: `${img}` }} style={{width:170,height:210,resizeMode:'contain',backgroundColor:"#EFDFC8"}}/>
           <Text style={{fontSize:18,fontWeight:"bold"}}>{title}</Text>
